@@ -34,7 +34,7 @@ def printMatchingDictionaryInformation(matchingDict, dataset):
         totalRawFiles = 0.0
         rawFilesWithMatches = 0.0
 
-        for fileName in matchingDict:
+        for fileName in matchingDict[dataset]:
             totalRawFiles += 1.0
             if matchingDict[dataset][fileName] != []:
                 rawFilesWithMatches += 1.0
