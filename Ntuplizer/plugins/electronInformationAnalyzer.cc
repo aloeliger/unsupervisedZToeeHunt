@@ -36,7 +36,7 @@ class electronInformationAnalyzer : public edm::one::EDAnalyzer<edm::one::Shared
         edm::Service<TFileService> theFileService;
         edm::EDGetTokenT<std::vector<pat::Electron>> electronToken;
 
-        unsigned int nElectrons;
+        unsigned int nElectrons = 0;
         std::vector<double> ptVector;
         std::vector<double> etaVector;
         std::vector<double> phiVector;
@@ -87,6 +87,7 @@ void electronInformationAnalyzer::analyze(const edm::Event& iEvent, const edm::E
     edm::Handle<std::vector<pat::Electron>> electronHandle;
     iEvent.getByToken(electronToken, electronHandle);
 
+    this->clearElectronVectors();
     this->fillElectronVectors(*electronHandle);
 
     theTree->Fill();
